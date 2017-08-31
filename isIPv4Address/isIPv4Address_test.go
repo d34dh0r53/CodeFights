@@ -2,8 +2,9 @@ package isIPv4Address
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/stretchr/testify/require"
 )
 
 func TestIsIPv4Address(t *testing.T) {
@@ -19,10 +20,10 @@ func TestIsIPv4Address(t *testing.T) {
 	test2 := &test{"172.316.254.1", false}
 	test3 := &test{".254.255.0", false}
 	test4 := &test{"1.1.1.1a", false}
-	test5 := &test{"172.16.254.1", true}
-	test6 := &test{"172.16.254.1", true}
-	test7 := &test{"172.16.254.1", true}
-	test8 := &test{"172.16.254.1", true}
+	test5 := &test{"0.254.255.0", true}
+	test6 := &test{"0..1.0", false}
+	test7 := &test{"1.1.1.1.1", false}
+	test8 := &test{"1.256.1.1", false}
 
 	testArray = append(testArray, test1)
 	testArray = append(testArray, test2)
